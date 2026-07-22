@@ -5,11 +5,18 @@
   padding: 0;
 }
 
+/* NASA brand colors:
+   NASA Blue: #0B3D91
+   NASA Red:  #FC3D21
+   White:     #FFFFFF
+*/
+
 /* Base page styles */
 body {
   font-family: Arial, sans-serif;
   background-color: #f1f1f1;
   padding: 20px;
+  color: #212121;
 }
 
 /* Centered container */
@@ -26,12 +33,13 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
   margin-bottom: 20px;
+  border-bottom: 4px solid #0B3D91;
 }
 
 h1 {
   font-family: Verdana, sans-serif;
   font-weight: bold;
-  color: #212121;
+  color: #0B3D91;
 }
 
 /* Logo */
@@ -64,14 +72,17 @@ button {
   width: 100%;
 }
 
-/* Button specific */
+/* Button specific - NASA red */
 button {
-  background-color: #d3d3d3;
-  color: black;
+  background-color: #FC3D21;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease;
 }
 button:hover {
-  background-color: #bfbfbf;
+  background-color: #d6330f;
 }
 
 /* Stack horizontally on wider screens */
@@ -80,11 +91,37 @@ button:hover {
     flex-direction: row;
     padding: 0;
   }
-  
+
   input[type="date"],
   button {
     width: auto;
   }
+}
+
+/* "Did You Know?" space fact banner */
+.space-fact {
+  background-color: #0B3D91;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 6px;
+  margin: 0 20px 20px;
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.space-fact strong {
+  color: #FC3D21;
+}
+
+/* Loading message */
+.loading-message {
+  flex: 1 1 100%;
+  text-align: center;
+  padding: 40px;
+  color: #0B3D91;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 /* Gallery flex container */
@@ -108,6 +145,8 @@ button:hover {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  border-top: 3px solid #FC3D21;
 }
 
 /* Three columns on wider screens */
@@ -122,12 +161,60 @@ button:hover {
   height: 200px;
   object-fit: cover;
   border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+/* Hover zoom effect */
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+
+.gallery-item .media-wrap {
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.gallery-item h3 {
+  margin-top: 10px;
+  padding: 5px 5px 0;
+  font-size: 16px;
+  color: #0B3D91;
 }
 
 .gallery-item p {
-  margin-top: 10px;
-  padding: 5px;
+  margin-top: 4px;
+  padding: 0 5px 5px;
   font-size: 14px;
+  color: #666;
+}
+
+/* Video badge for APOD video entries */
+.video-badge {
+  display: inline-block;
+  background-color: #FC3D21;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin: 8px 5px 0;
+}
+
+.video-thumb-placeholder {
+  width: 100%;
+  height: 200px;
+  border-radius: 4px;
+  background-color: #0B3D91;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item .video-thumb-placeholder:hover {
+  transform: scale(1.05);
 }
 
 /* Placeholder content */
@@ -141,4 +228,80 @@ button:hover {
 .placeholder-icon {
   font-size: 48px;
   margin-bottom: 20px;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  padding: 25px;
+  position: relative;
+  border-top: 5px solid #0B3D91;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #0B3D91;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #FC3D21;
+}
+
+.modal-media img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.modal-media iframe {
+  width: 100%;
+  height: 360px;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+#modalTitle {
+  color: #0B3D91;
+  margin-bottom: 5px;
+}
+
+.modal-date {
+  color: #666;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+#modalExplanation {
+  line-height: 1.5;
+  font-size: 15px;
 }
